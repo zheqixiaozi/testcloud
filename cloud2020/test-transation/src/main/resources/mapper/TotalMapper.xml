@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zzz.springcloud.dao.TotalDao">
+
+    <resultMap id="BaseResultMap" type="com.zzz.springcloud.domain.Total">
+        <id column="total_id" property="totalId" jdbcType="BIGINT"/>
+        <result column="total" property="total" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <update id="update">
+        UPDATE t_total
+        SET
+          total = #{total}
+        WHERE
+          total_id = #{totalId};
+    </update>
+
+    <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+            *
+        from
+            t_total
+        where
+            total_id = #{totalId};
+    </select>
+
+</mapper>
+
+
+
+

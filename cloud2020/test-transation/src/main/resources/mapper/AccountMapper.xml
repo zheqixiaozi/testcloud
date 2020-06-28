@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zzz.springcloud.dao.AccountDao">
+
+    <resultMap id="BaseResultMap" type="com.zzz.springcloud.domain.Account">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="total" property="total" jdbcType="DECIMAL"/>
+        <result column="used" property="used" jdbcType="DECIMAL"/>
+        <result column="residue" property="residue" jdbcType="DECIMAL"/>
+        <result column="total_id" property="totalId" jdbcType="BIGINT" />
+    </resultMap>
+
+    <update id="update">
+        UPDATE t_account
+        SET
+          total = #{total}
+        WHERE
+          user_id = #{userId};
+    </update>
+
+    <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+            *
+        from
+            t_account
+        where
+            user_id = #{userId}; 
+    </select>
+
+</mapper>
+
+
+
+
